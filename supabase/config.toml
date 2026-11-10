@@ -1,0 +1,37 @@
+# Supabase CLI project configuration (https://supabase.com/docs/guides/cli/config)
+project_id = "unscramble"
+
+[api]
+max_rows = 1000
+
+[auth]
+site_url = "http://localhost:8081"
+additional_redirect_urls = ["unscramble://auth/callback", "http://localhost:8081/auth/callback"]
+enable_signup = true
+minimum_password_length = 8
+
+[auth.email]
+enable_confirmations = true
+
+[auth.external.google]
+enabled = false
+client_id = "env(SUPABASE_AUTH_GOOGLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_GOOGLE_SECRET)"
+
+[auth.external.apple]
+enabled = false
+client_id = "env(SUPABASE_AUTH_APPLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_APPLE_SECRET)"
+
+# Functions authenticate callers themselves (works with legacy and new API keys).
+[functions.submit-game]
+verify_jwt = false
+
+[functions.daily-challenge]
+verify_jwt = false
+
+[functions.delete-account]
+verify_jwt = false
+
+[functions.billing-webhook]
+verify_jwt = false
